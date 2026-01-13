@@ -6,5 +6,5 @@
 
 | Название проекта                                     | Описание                                               | Стек технологий                    |
 |------------------------------------------------------|--------------------------------------------------------|------------------------------------|
-| [digit-recognizer](https://github.com/Shureshek/kaggle-playground/tree/main/02-digit-recognizer)         |  Распознавание цифры в наборе данных, содержащем десятки тысяч рукописных изображений.         | `Python`, `Pandas`, `Scikit-learn`      |
+| [digit-recognizer](https://github.com/Shureshek/kaggle-playground/tree/main/02-digit-recognizer)         |  Распознавание цифры в наборе данных, содержащем десятки тысяч рукописных изображений MNIST.         | `Python`, `Pandas`, `Scikit-learn`      |
 | [titanic](https://github.com/Shureshek/kaggle-playground/tree/main/01-titanic)               | Предсказание, какие пассажиры выжили после крушения «Титаника».             | `Python`, `Pandas`, `Scikit-learn`, `Catboost`, `Xgboost`     |
