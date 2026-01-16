@@ -1,0 +1,6 @@
+# Игнорировать ВСЕ папки с именем "data" везде в проекте
+data/
+**/data/
+models/
+**/models/
+journey-springfield/
