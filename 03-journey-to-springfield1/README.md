@@ -6,4 +6,29 @@
 ## Результаты
 - **Kaggle F1-score:** 0.99
 
+## Обзор проекта
+- **Задача:** По изображению определить, какой из 42 персонажей Симпсонов на нем изображен.
+- **Датасет:** ~20,000 изображений из Kaggle соревнования "Journey to Springfield".
+- **Подход:** Transfer learning с ResNet50 + кастомный пайплайн обучения.
+
+## Архитектура модели
+- **Базовая модель:** Предобученная ResNet50 (веса ImageNet)
+- **Дообучение:** Замороженные ранние слои, обучаемые layer4 + классификатор
+- **Кастомная голова:**
+```
+Dropout(0.4) → Linear(2048→512) → BatchNorm → ReLU → Dropout(0.3) → Linear(512→42)
+```
+
+## Аугментация данных
+```
+train_transform = A.Compose([
+    A.HorizontalFlip(p=0.5),  # Случайное горизонтальное отражение
+    A.ShiftScaleRotate(shift_limit=0.1, scale_limit=0.1, rotate_limit=15, p=0.7),
+    A.Affine(scale=(0.9, 1.1), translate_percent=0.1, rotate=(-10, 10), p=0.5),
+    A.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.08, p=0.7),
+    A.Resize(224, 224),  # Приведение к размеру модели
+    A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ToTensorV2(),  # Конвертация в тензор
+])
+```
 
